@@ -1,0 +1,51 @@
+
+public class CountShips {
+	static int [][] ships = {
+			{0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+			{0, 1, 0, 0, 0, 0, 0, 1, 0, 0},
+			{0, 1, 0, 1, 1, 0, 0, 0, 0, 0},
+			{0, 1, 0, 1, 1, 0, 0, 1, 1, 1},
+			{0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{1, 1, 1, 1, 0, 1, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+			
+			};
+	
+	static int countShips(int ships[][], int m, int n) {
+		int count = 0; 
+
+		// Traverse the input matrix 
+		for (int i=0; i<m; i++) 
+		{ 
+			for (int j=0; j<n; j++) 
+			{ 
+				// If current cell is '1', then check 
+				// whether this is top-leftmost of a 
+				// ship. If yes, then increment count 
+				if (ships[i][j] == 1) 
+				{ 
+					if ((i == 0 || ships[i-1][j] == 0) && 
+						(j == 0 || ships[i][j-1] == 0)) 
+						count++; 
+				} 
+			} 
+		} 
+
+		return count; 
+						
+            
+            }
+	public static void main (String[] args) 
+	{ 
+		// Size of given matrix is m X n 
+		int m = 10; 
+		int n = 10; 
+		//
+		System.out.println("Number of ships is: "
+									+ countShips(ships, m, n)); 
+	} 
+
+}
